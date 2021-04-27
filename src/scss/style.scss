@@ -1,0 +1,380 @@
+@import './src/scss/reset';
+@import './src/scss/fonts';
+@import './src/scss/global';
+@import './src/scss/vars';
+.app{
+  &__content{
+    background-color: #f4f4f4;
+  }
+}
+
+.logo{
+  height: 35px;
+  width: 160px;
+}
+.header{
+  background-color: #1f1f1f;
+  padding: 20px 0;
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.nav{
+  &__list{
+    display: flex;
+    &-item{
+      padding-right: 30px;
+    }
+    &-active{
+      color: #ff6600;
+    }
+  }
+  &__count{
+    color: #f60;
+    position: absolute;
+    top: 25px;
+    margin-left: 10px;
+  }
+}
+.search{
+  position: relative;
+  &__button{
+    @extend %buttonStyles
+  }
+  &__error{
+    position: absolute;
+    bottom: -10px;
+    left: 40px;
+    color: red;
+  }
+}
+
+.releases{
+  &__inner{
+    padding-bottom: 65px;
+  }
+  &__titles{
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: white;
+    text-align: center;
+    &-main{
+      position: relative;
+      font-size: 40px;
+      top: 41px;
+    }
+    &-subtitle{
+      position: relative;
+      opacity: .1;
+      font-size: 60px;
+      transform: translate(0, -45%);
+    }
+  }
+  &__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  justify-content: center;
+  &__title{
+    margin-right: 20px;
+    color: #1f1f1f;
+  }
+  &__button{
+    @extend %buttonStyles;
+    float: left;
+    width: 110px;
+    border: none;
+  }
+  &__controls{
+    min-width: 120px;
+    background-color: #f60;
+    color: #1f1f1f;
+    border-radius: 25px;
+    & .MuiNativeSelect-select.MuiNativeSelect-select{
+    padding: 10px;
+    color: #1f1f1f;
+    }
+  }
+  .MuiInput-root{
+    width: 140px;
+    padding: 0 10px;
+  }
+  &__select{
+    padding: 0;
+  }
+  .MuiInput-underline:before{
+    content: '';
+    display: none;
+  }
+  .MuiInput-underline:after{
+    content: '';
+    display: none;
+  }
+
+}
+
+.pagination{
+  & .MuiPagination-ul {
+    display: flex;
+    justify-content: center;
+  }
+  & .MuiPaginationItem-root {
+    color: #000;
+  }
+  & .MuiPaginationItem-page:hover {
+  background-color: #8300ff;
+  }
+  & .MuiPaginationItem-page.Mui-selected {
+  background-color: #8300ff
+  }
+}
+
+.item{
+  position: relative;
+  margin-bottom: 35px;
+  width: 230px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: .6s;
+  cursor: pointer;
+  background: #1f1f1f;
+  &__poster{
+    display: block;
+    max-height: 375px;
+    position: relative;
+    z-index: 3;
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #c6c6c6;
+      z-index: 2;
+      transition: 0.5s all;
+      opacity: 0;
+    }
+    &-vote{
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      right: 0;
+      color: #fff;
+      transform: translate(50%, 50%);
+      background-color: #f60;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+  &__play{
+    position: absolute;
+    opacity: 0;
+    top: 35%;
+    left: 35%;
+    .MuiSvgIcon-root{
+      font-size: 80px;
+      color: #f60;
+      border: none;
+    }
+  }
+  &__info{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    &-title{
+      color: #c6c6c6;
+      transition: .5s;
+    }
+    &-btn{
+      @extend %buttonStyles;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      &:hover{
+        background-color: transparent;
+        color: #fff;
+      }
+    }
+  }
+  &:hover{
+    .item__poster:before{
+      opacity: .4;
+    }
+    .item__info{
+      &-title{
+        color: #ff6600;
+      }
+      &-btn{
+        color: #ff6600;
+      }
+    }
+    .item__play{
+      opacity: 1;
+      z-index: 4;
+    }
+  }
+}
+
+.watchlist{
+  min-height: 90vh;
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .item{
+    margin-right: 45px;
+  }
+  &__error{
+    font-size: 30px;
+    margin: 0 auto;
+    font-weight: bold;
+  }
+  &__titles{
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: white;
+    text-align: center;
+    &-main{
+      position: relative;
+      font-size: 40px;
+      top: 41px;
+    }
+    &-subtitle{
+      position: relative;
+      opacity: .1;
+      font-size: 60px;
+      transform: translate(0, -45%);
+    }
+  }
+}
+
+.result{
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 50px;
+    min-height: 90vh;
+    align-items: center;
+  }
+  &__image{
+    margin-top: 20px;
+    max-width: 370px;
+  }
+}
+
+.details{
+  height: calc(100vh - 88px);
+  padding-top: 40px;
+  &__inner{
+    display: flex;
+  }
+  &__film{
+    width: 100%px;
+    &-button{
+      @extend %buttonStyles;
+    }
+  }
+  &__info{
+    padding-left: 70px;
+    &-title{
+      padding-bottom: 10px;
+    }
+    &-numbers{
+      display: flex;
+      margin-bottom: 25px;
+    }
+  }
+}
+.film__poster{
+  & .MuiBox-root-13{
+    padding: 0;
+  }
+  &-poster{
+    margin-bottom: 30px;
+    width: 280px;
+  }
+  &-trailer{
+    position: relative;
+    img{
+      width: 280px;
+    }
+    &::after{
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      position: absolute;
+      transition: .6s;
+      top: 0;
+      left: 0;
+      opacity: .5;
+    }
+    &:hover{
+      &::after{
+        opacity: 0;
+      }
+    }
+  }
+  &-button{
+    @extend %buttonStyles;
+    position: absolute;
+    bottom: 25px;
+    left: 10px;
+    z-index: 2;
+  }
+}
+.block{
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+  text-align: center;
+  color: #1f1f1f;
+  &__item{
+    font-size: 32px;
+    font-weight: 700;
+  }
+}
+
+.overview{
+  margin-bottom: 25px;
+  &__title{
+    padding-bottom: 15px;
+  }
+  &__description{
+    color: #1f1f1f;
+  }
+}
+.description{
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  &__title{
+    padding-right: 15px;
+  }
+  &__genres{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__info{
+    font-size: 20px;
+    color: #1f1f1f;
+  }
+}
+
